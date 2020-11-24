@@ -22,11 +22,11 @@ final public class Route {
 }
 
 extension Route {
-    func setRoot(presentable: Presentable?, animate: Bool = false, hideBar: Bool = false) {
+    public func setRoot(presentable: Presentable?, animate: Bool = false, hideBar: Bool = false) {
         guard let navigationController = rootController as? UINavigationController,
-            let controller = presentable?.presenting else {
-                assertionFailure("Please properly check that controller and navigation controller both are provided")
-                return
+              let controller = presentable?.presenting else {
+            assertionFailure("Please properly check that controller and navigation controller both are provided")
+            return
         }
         navigationController.isNavigationBarHidden = hideBar
         navigationController.setViewControllers([controller], animated: animate)
@@ -35,11 +35,11 @@ extension Route {
 }
 
 extension Route {
-    func present(presentable: Presentable?, animate: Bool = false) {
+    public func present(presentable: Presentable?, animate: Bool = false) {
         guard let navigationController = rootController as? UINavigationController,
-            let controller = presentable?.presenting else {
-                assertionFailure("Please properly check that controller and navigation controller both are provided")
-                return
+              let controller = presentable?.presenting else {
+            assertionFailure("Please properly check that controller and navigation controller both are provided")
+            return
         }
         navigationController.present(controller, animated: animate, completion: nil)
     }
@@ -55,16 +55,16 @@ extension Route {
 
 
 extension Route {
-    func push(presentable: Presentable?, animated: Bool = false) {
+    public func push(presentable: Presentable?, animated: Bool = false) {
         guard let navigationController = rootController as? UINavigationController,
-            let controller = presentable?.presenting else {
-                assertionFailure("Please properly check that controller and navigation controller both are provided")
-                return
+              let controller = presentable?.presenting else {
+            assertionFailure("Please properly check that controller and navigation controller both are provided")
+            return
         }
         navigationController.pushViewController(controller, animated: animated)
     }
     
-    func pop(animated: Bool) {
+    public func pop(animated: Bool) {
         guard let navigationController = rootController as? UINavigationController else {
             assertionFailure("Please properly check that navigation controller is present as the root of router")
             return
@@ -80,7 +80,7 @@ extension Route {
         
         /// find the controller to pop to
         for controller in navigationController.viewControllers where controller is T {
-             navigationController.popToViewController(controller, animated: animated)
+            navigationController.popToViewController(controller, animated: animated)
             return controller as? T
         }
         return nil
