@@ -36,15 +36,12 @@ open class BaseView: UIView {
     
     
     public func freezeAll() {
-        
         addSubview(freezerView)
-        
         NSLayoutConstraint.activate([
             freezerView.leadingAnchor.constraint(equalTo: leadingAnchor),
             freezerView.trailingAnchor.constraint(equalTo: trailingAnchor),
             freezerView.topAnchor.constraint(equalTo: topAnchor),
             freezerView.bottomAnchor.constraint(equalTo: bottomAnchor)
-            
         ])
     }
     
