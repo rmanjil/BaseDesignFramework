@@ -7,19 +7,19 @@
 
 import UIKit
 
-extension UIView {
+public extension UIView {
     static var identifier: String {
         "\(self)"
     }
 }
 
 
-extension UITableView {
+public extension UITableView {
     func registerCell<T: UITableViewCell>(_ cellClass: T.Type) {
         self.register(cellClass, forCellReuseIdentifier: String(describing: cellClass.identifier))
     }
     
-    public func dequeueCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
+    func dequeueCell<T: UITableViewCell>(_ cellClass: T.Type, for indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withIdentifier: cellClass.identifier, for: indexPath) as? T else {
             fatalError("Unable to dequeue \(String(describing: cellClass)) with reuseId of \(String(describing: T.self))")
         }
