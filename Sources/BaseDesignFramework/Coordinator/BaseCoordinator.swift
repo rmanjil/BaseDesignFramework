@@ -100,6 +100,10 @@ open class BaseCoordinator: NSObject, Coordinator {
         return childCoordinators
     }
     
+    
+    public func removeAllChild() {
+        childCoordinators.removeAll()
+    }
     deinit {
         print("Deinit ->", String(describing: self))
     }
